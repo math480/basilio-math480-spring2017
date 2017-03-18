@@ -1,0 +1,160 @@
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+\documentclass{beamer}
+% Replace the \documentclass declaration above
+% with the following two lines to typeset your 
+% lecture notes as a handout:
+%\documentclass{article}
+%\usepackage{beamerarticle}
+
+
+% There are many different themes available for Beamer. A comprehensive
+% list with examples is given here:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+% You can uncomment the themes below if you would like to use a different
+% one:
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{boxes}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{default}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+\title{Urysohn's Lemma}
+
+
+
+\author{Brannon Basilio}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[University of Hawaii] % (optional, but mostly needed)
+{
+	University of Hawaii
+}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date{February 27, 2017}
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+\subject{Theoretical Computer Science}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+% Let's get started
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+
+% Section and subsections will appear in the presentation overview
+% and table of contents.
+\section{Definitions}
+
+\subsection{Basic Definitions}
+
+\begin{frame}{Basic Definitions}
+  \begin{itemize}
+  \item {
+    \textit{A topological space $(X, \mathcal{T})$ consists of a non-empty set $X$ together with a fixed family $\mathcal{T}$ of subsets of $X$ satisfying}\\
+		(T1) \quad $X, \emptyset \in \mathcal{T}$\\
+		(T2) \quad \textit{the intersection of any two sets in $\mathcal{T}$ is in $\mathcal{T}$.}\\
+		(T3) \quad \textit{the union of any collection sets in $\mathcal{T}$ is in $\mathcal{T}$.}\\
+  \pause
+  }
+  \item {
+    \textit{A topological space $(X, \mathcal{T})$ is normal if for every pair of disjoint non-empty closed sets $C, D \subseteq X$ there exists disjoint non-empty open sets $U, V$ such that $C \subseteq U$ and $D \subseteq V$.}
+    \pause
+  }
+  \item {\textit{A map $f : X \rightarrow Y$ of topological spaces $(X, \mathcal{T}_X)$ and $(Y, \mathcal{T}_Y)$ is continuous if $U \in \mathcal{T}_Y \Rightarrow f^{-1}(U) \in \mathcal{T}_X$}.}
+  \end{itemize}
+\end{frame}
+
+\subsection{Definitions for Urysohn's Lemma}
+
+% You can reveal the parts of a slide one at a time
+% with the \pause command:
+\begin{frame}{Definitions for Urysohn's Lemma}
+  \begin{itemize}
+  \item {
+    \textit{The dyadic rationals in $[0, 1]$ is the set $\mathbb{D} = \big\{r = \frac{m}{2^n} \vert m,n \in \mathbb{N} \text{ and } 0 \leq m \leq 2^n, n \geq 0 \big\}$.\\Note this set is dense in $[0, 1]$.}
+    \pause % The slide will pause after showing the first item
+  }
+  \item {   
+    \textit{Let $(X, \mathcal{T})$ be a topological space. A Urysohn family is a collection of open sets indexed by $\mathbb{D}$}
+$\mathcal{U} = \{U_r \vert r \in \mathbb{D}\}, \text{ such that } s < t \Rightarrow \overline{U}_s \subset U_t$
+  }
+  % You can also specify when the content should appear
+  % by using <n->:
+  \item<3-> {
+    \textit{The associated Urysohn function $f = f_{\mathcal{U}} : X \rightarrow [0, 1]$ is defined by}
+
+	\[
+	f(x) = 
+		\begin{cases}
+			\inf \{r \in \mathbb{D} \vert x \in U_r\} & \text{ if } x \in U_1,\\
+			1 & \text{ otherwise.}
+		\end{cases}
+	\]
+  }
+  \end{itemize}
+\end{frame}
+
+
+\end{document}
+
+

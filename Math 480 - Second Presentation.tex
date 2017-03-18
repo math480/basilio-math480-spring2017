@@ -1,0 +1,123 @@
+\documentclass[12pt]{article}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb} %maths
+\usepackage{amsmath} %maths
+\usepackage[utf8]{inputenc} %useful to type directly diacritic characters
+\usepackage{setspace}
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+\usepackage{tabu}
+\usepackage{graphicx}
+
+
+\newcommand{\T}{\mathcal{T}} %makes T topology
+\newcommand{\D}{\mathbb{D}} %makes dyadic D
+\newcommand{\U}{\mathcal{U}} %makes dyadic D
+
+
+
+
+\begin{document}
+
+
+
+
+
+\center{\subsection*{Urysohn's Lemma}}
+
+\textit{A topological space $(X, \mathcal{T})$ is normal if and only if for every pair of disjoint closed sets $A$ and $B$ there is a continuous function $f : X \rightarrow [0, 1]$ such that $f | A = 0$ and $f | B = 1$.}
+
+
+
+
+\flushleft\subsubsection*{Definition}
+\textit{A topological space $(X, \mathcal{T})$ consists of a non-empty set $X$ together with a fixed family $\mathcal{T}$ of subsets of $X$ satisfying}
+		\begin{align*}
+			(T1)& \quad X, \emptyset \in \mathcal{T}\\
+			(T2)& \quad \textit{the intersection of any two sets in $\mathcal{T}$ is in $\mathcal{T}$.}\\
+			(T3)& \quad \textit{the union of any collection sets in $\mathcal{T}$ is in $\mathcal{T}$.}
+		\end{align*}
+
+
+
+
+\subsubsection*{Definition}
+\textit{A topological space $(X, \mathcal{T})$ is normal if for every pair of disjoint non-empty closed sets $C, D \subseteq X$ there exists disjoint non-empty open sets $U, V$ such that $C \subseteq U$ and $D \subseteq V$.}\\
+
+
+
+
+\subsubsection*{Definition}
+\textit{The dyadic rationals in $[0, 1]$ is the set $\mathbb{D} = \big\{r = \frac{m}{2^n} \vert m,n \in \mathbb{N} \text{ and } 0 \leq m \leq 2^n, n \geq 0 \big\}$. Note this set is dense in $[0, 1]$.}
+
+
+
+
+\subsubsection*{Definition}
+\textit{Let $(X, \mathcal{T})$ be a topological space. A Urysohn family is a collection of open sets indexed by $\D$}
+$$\mathcal{U} = \{U_r \vert r \in \D\}, \text{ such that } s < t \Rightarrow \overline{U}_s \subset U_t$$
+
+
+
+
+\subsubsection*{Definition}
+\textit{The associated Urysohn function $f = f_{\mathcal{U}} : X \rightarrow [0, 1]$ is defined by}
+
+	\[
+	f(x) = 
+		\begin{cases}
+			\inf \{r \in \D \vert x \in U_r\} & \text{ if } x \in U_1,\\
+			1 & \text{ otherwise.}
+		\end{cases}
+	\]
+
+
+
+
+\subsubsection*{Definition}
+\textit{A map $f : X \rightarrow Y$ of topological spaces $(X, \T_X)$ and $(Y, \T_Y)$ is continuous if $U \in T_Y \Rightarrow f^{-1}(U) \in T_X$}.
+
+
+
+
+
+\center\subsubsection*{Claim: Urysohn functions are continuous}
+\flushleft{Let} $f$ be the Urysohn function associated to a Urysohn family $\U = \{U_r\}$ for a space $(X, \T_X)$. We shall show that for any $s \in (0, 1)$ that $f^{-1}[0, s)$ and $f^{-1}(s, 1]$ are open.\\
+Notice that
+	\begin{enumerate}
+		\item $f(x) < r \Rightarrow x \in U_r$\\
+		\item This implies $x \notin U_r \Rightarrow f(x) \geq r$\\
+		\item Moreover, $x \in U_r \Rightarrow f(x) \leq r$.\\
+		\item Thus, $f(x) > r \Rightarrow x \in X -  U_r$.
+	\end{enumerate}
+Showing that $f^{-1}[0, s) = \cup \{U_r \vert r < s, r \in \D\}$, which is open and $f^{-1}(s, 1] = \cup \{X - \overline{U}_r \vert r > s, r \in \D\}$, which is also open, prove that $f$ is continuous.
+
+
+
+
+
+\center\subsubsection*{Proof of Urysohn's Lemma}
+\flushleft
+$\boxed{\Leftarrow}$ Easy; Suppose $A, B \subseteq X$ are disjoint nonempty closed sets. Let $f : X \rightarrow [0, 1]$ be a continuous functions such that $f | A = 0$ and $f | B = 1$. Thus, $A \subseteq f^{-1}([0, \frac{1}{2})$ and $B \subseteq f^{-1}((\frac{1}{2}, 1])$. Since $f$ is continuous, both preimages are open and disjoint. \\~\\
+
+$\boxed{\Rightarrow}$ Let $A$ and $B$ be closed sets of $X$. Also, let $U_1 = X - B$. We can recursively construct a Urysohn family of open sets $\U$ such that the associated function $f$ will be our desired function. 
+
+\begin{center}
+	\includegraphics[scale = 0.9]{UrysohnsDiagram}
+\end{center}
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
