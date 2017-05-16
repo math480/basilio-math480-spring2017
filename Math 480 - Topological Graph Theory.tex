@@ -1,0 +1,219 @@
+\documentclass[12pt]{article}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb} %maths
+\usepackage{amsmath} %maths
+\usepackage[utf8]{inputenc} %useful to type directly diacritic characters
+\usepackage{setspace}
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+\usepackage{tabu}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage[english]{babel}
+
+
+\newtheorem{mydef}{Definition}
+
+\newcommand{\tab}{\hspace{10mm}}
+
+\newtheorem{name}{Printed output}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+ 
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+
+
+\begin{document}
+
+
+
+\title{Topological Graph Theory} % makes title
+\author{Brannon Basilio} % makes author
+\date{} % makes date (blank)
+\maketitle
+
+
+
+
+\tab In mathematics, it is common to see different areas of math being used to study other areas of mathematics.
+%
+A couple of examples being algebraic topology where abstract algebra is used to study topology, differential geometry where calculus is used to study geometry.
+%
+With no exception to this, is the topic of topological graph theory.
+%
+Just like the previous examples, topological graph theory uses one topic of mathematics to help study another area.
+%
+In this case, topology, in terms of surfaces, is used to help study graph theory.
+%
+In this paper, we shall first go over go over some definitions used in graph theory, then the history of it, move on to applications, then lastly going over definitions of topological graph theory, some applications, and finally prove Euler's characteristic formula for planar graphs.\\
+%
+%
+%
+
+\tab First off, we shall go over some definitions of graph theory. The following are the definitions of graphs, parallel edges, loops, connected graph, and cycles.
+
+%definition 1
+\begin{mydef}
+A graph is a finite set of vertices and edges, denoted as $(V, E)$.
+\end{mydef}
+
+%definition 2
+\begin{mydef}
+Parallel edges are edges that share the same two end vertices.
+\end{mydef}
+
+%definition 3
+\begin{mydef}
+A loop is an edge which starts and ends at the same vertex.
+\end{mydef}
+
+%definition 4
+\begin{mydef}
+A graph G, is connected if for every pair of vertices $a, b$ in G there exists a path of edges from $a$ to $b$.
+\end{mydef}
+
+%definition 5
+\begin{mydef}
+A cycle is a graph with some number of vertices connected in a closed circuit.
+\end{mydef}
+
+
+
+\tab Now that some definitions are known, we can move on to the history of graph theory.
+%
+In the early 1700s, the people of K{\"o}nigsberg wondering about the seven bridges of their town.
+%
+They pondered if you can start at one place in the city, cross all seven bridges exactly once and end up at the same place you started.
+%
+What Euler did was use graph theory to solve the problem.
+%
+He drew out the problem by using vertices to represent the areas that were divided by the river and edges to represent the bridges.
+%
+From this graph, Euler was able to prove that it was impossible to start at one vertex, cross every edge exactly twice, and end up at the same vertex.
+%
+Thus, graph theory was born.\\
+%
+
+
+
+\tab Fast forward about 300 years, and graph theory plays an integral part of many things.
+%
+One example that uses graph theory is networks, such as networks of communication and data organization.
+%
+Libraries use graph theory to keep track of the massive amounts of data that it stores.
+%
+Another example is the modeling of physical and biological systems like protein interaction, where the protein are vertices and the interaction as edges.
+%
+The previous example is graph theory being used to represent things, whereas the first examples were actually applying graph theory for computers.
+%
+Continuing with examples of graph representation, we can use it to represent the flight routes between cities where naturally, the vertices are cities and the edges are flight routes between the cities.\\
+%
+
+
+
+\tab Since we are now familiar with some concepts in graph theory, we can introduce the topic of topological graph theory, which is the study of embedding graphs on surfaces, spatial embeddings of graphs, and graphs as topological spaces.
+%
+For now, we shall only go over embedding of graphs on surfaces.
+%
+But, before that, we need to know some basic definitions.
+%
+
+%definition 6
+\begin{mydef}
+An embedded graph is a graph which can be drawn on a surface without two edges intersecting.
+\end{mydef}
+
+%definition 7
+\begin{mydef}
+Planar graphs are graphs that can be embedded on the plane.
+\end{mydef}
+
+%definition 8
+\begin{mydef}
+Faces are regions that divide the plane by edges of the graph; for convention, the plane is a face.
+\end{mydef}
+
+
+
+\tab Now that we have some definitions, we can see some examples of topological graph theory.
+%
+A toroidal graph is a graph that can be embedded on a torus.
+%
+An example of an embedded graph is the M{\"o}bius ladder.
+%
+The M{\"o}bius ladder can be drawn on a torus without two edges crossing, but it cannot be drawn on any other surface, namely the plane, where two edges do not cross.\\
+%
+
+
+
+\tab Topological graph theory can be applied to the real world.
+%
+One application that uses it is circuit.
+%
+With circuits, we try to embed (print) a graph (circuit) onto a surface (board).
+%
+Now, the important part where topological graph theory comes in is the actual graph itself.
+%
+The reason being is that if we end up making a graph that cannot be embedded on the surface, then we get edges that cross.
+%
+When that happens, a short circuit is made and the board cannot be used.\\
+%
+
+
+
+\tab Many theorems are in topological graph theory, but the one we shall go over today is Euler's formula. 
+%
+The following is the theorem of Euler's formula (for planar graphs).
+	
+	\begin{theorem}
+	\emph{(Euler's Formula)}
+	\label{Lagrange}
+		For every connected planar graph, we have $$v - e + f = 2$$ where $v$ is the number of vertices, $e$ is the number of edges, and $f$ is the number of faces.
+	\end{theorem}
+
+	\begin{proof}
+		We shall prove this using induction on the edges. First, we check the base case of $e = 0$.
+		Note that to have a connected graph, we can only have one vertex. Thus we have $1 - 0 + 1 = 2$.
+		Hence, the base case holds. Now, for the induction step, we assume that this holds for all $e$ such that $0 \leq e \leq n$. We prove this holds for $n + 1$ edges. Now, we break this up into two cases. The first case is that the graph has no cycles. If the graph has no cycles, then we only have one face and since it is a connected graph with $n + 1$ edges, then the graph must have $n + 2$ vertices. Thus, we have
+		$n + 2 - (n + 1) + 1 = 2$ and thus this case holds. The next case is if the graph does have a cycle. 
+		Then, we take an edge away from that cycle. Hence, the number of faces and edges went down by one. But, by induction, Euler's formula now holds for our new graph and denote the number of vertices as $v'$, the new number of edges as $e'$, and the new number of faces as $f'$. Since Euler's formula holds for this new graph, we get $v' - e' + f' = 2$. But, $v' = v$, $e' = e - 1$, and $f' = f - 1$. Therefore, we get $v - (e - 1) + f - 1 = v - e + f = 2.$ So, the formula holds.
+	\end{proof}
+
+\tab After all this, we can see how graph theory and topological graph theory are useful in the real world, which is important since it has so many applications, especially in computer science.
+%
+But, more importantly, we get to see how areas of mathematics can be used to further other areas of mathematics.
+%
+In this case, we see topology helping further graph theory, but also, we can use combinatorics to further topology, a subject called combinatorial topology.
+%
+We see all kinds of interactions in mathematics where it may seem like there is no direct connection to two subjects, but there seems to always be a connection.
+%
+Some examples of this is algebraic topology, differential geometry, and lots of other subjects. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
